@@ -1,0 +1,27 @@
+{
+  "name": "googlemap",
+  "version": "0.0.1",
+  "description": "gis4308 assignment03 google map api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bailig/GIS4308_A3_GoogleMapsAPI.git"
+  },
+  "author": "Bailig Abhanar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bailig/GIS4308_A3_GoogleMapsAPI/issues"
+  },
+  "homepage": "https://github.com/Bailig/GIS4308_A3_GoogleMapsAPI#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-util": "^3.0.7",
+    "jquery": "^3.0.0"
+  }
+}
