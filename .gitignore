@@ -1,4 +1,4 @@
 build/**/image/*
 node_modules
 .tmp
-sass-cache
+.sass-cache

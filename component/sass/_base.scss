@@ -1,0 +1,13 @@
+@import 'variable';
+
+.navbar{
+    border: 0px solid transparent;
+    width: 100%;
+    z-index: 100;
+}
+#{headings()}{
+    font-family: $headFont;
+}
+p, li{
+    font-family: $bodyFont;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Bailig Abhanar</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+		<header id="home">
+          <nav class="navbar navbar-inverse" role="navigation" data-spy="affix" data-offset-top="600">
+		    <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                       <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> 
+                    </button>
+                    <a class="navbar-brand" href="#home">Bailig Abnahar</a>
+                </div>
+		    
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#mapPage">Google Map</a></li>
+                        <li><a href="#listPage">Information List</a></li>
+                    </ul>
+                 </div>
+			  </div>
+		   </nav>
+          
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                       <h1 class="text-center">Bailig Abhanar</h1>
+                        <p class="text-center">This website is for the cource Web GIS Applications (GIS4308) Assignment03 Google Maps API.</p>
+                        <p class="text-center" id="doneArrow"><a href="#mapPage"><span class="glyphicon glyphicon-menu-down"></span></a></p>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+           </div>
+		</header>
+       
+        <article id="mapPage" class="container">
+            <div class="row">
+                <div class="col-md-10 col-sm-12 col-md-push-1">
+                    <h2 class="text-center">Google Map</h2>
+                    <div class="btn-group btn-group-justified" role="group" aria-labol="...">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" id="algponquin">Algonquin College</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" id="parliament">Parliament Hill</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" id="ottawaRoad">Ottawa Road Map</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary" id="zoom">Zoom</button>
+                        </div>
+                    </div>
+                <div id="map"></div>
+                </div>
+            </div>
+        </article>
+        <article id="listPage"></article>
+        <footer></footer>
+        
+        
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="js/script.js" type="text/javascript"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.23
+        &key=AIzaSyAewu4-e13oVJRDyv-cVJ4a0Vjx0m0LTQc&callback=initMap"></script>
+	</body>
+</html>

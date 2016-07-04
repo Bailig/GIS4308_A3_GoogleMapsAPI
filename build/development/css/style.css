@@ -1,0 +1,68 @@
+@import url(http://fonts.googleapis.com/css?family=Nixie+One);
+@import url(http://fonts.googleapis.com/css?family=Ledger);
+@import url(http://fonts.googleapis.com/css?family=Nixie+One);
+@import url(http://fonts.googleapis.com/css?family=Ledger);
+.navbar {
+  border: 0px solid transparent;
+  width: 100%;
+  z-index: 100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Nixie One", Georgia, serif;
+}
+
+p, li {
+  font-family: "Ledger", Garamond, Georgia, serif;
+}
+
+header {
+  background: url("../image/header5_3.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+}
+header .row {
+  color: white;
+  height: 100%;
+  /* Fallback for browsers do NOT support vh unit */
+  height: 100vh;
+  /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+header h1 {
+  font-size: 4em;
+}
+header p {
+  font-size: 1em;
+  font-weight: normal;
+  width: 65%;
+  margin: auto;
+  line-height: 2em;
+}
+header #doneArrow {
+  margin-top: 1em;
+  font-size: 2em;
+}
+header #doneArrow a:link, header #doneArrow a:visited {
+  color: white;
+  text-decoration: none;
+}
+header #doneArrow a:hover, header #doneArrow a:active {
+  color: #bfbfbf;
+}
+
+#mapPage .btn-group-justified {
+  margin: auto;
+}
+#mapPage #map {
+  margin: auto;
+  height: 65vh;
+  margin-bottom: 2em;
+}
+#mapPage h2 {
+  margin: 2em 0px .5em;
+  font-size: 2em;
+}

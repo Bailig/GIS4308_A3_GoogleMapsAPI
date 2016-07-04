@@ -1,0 +1,23 @@
+//width and height 100%
+@mixin backImage($image,$height:100vh){
+    background: url($image);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: $height;
+}
+// vertical align
+@mixin verticalAlign($position: relative) {
+    position: $position;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+@mixin verticalCenter(){
+    height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    height: 100vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}

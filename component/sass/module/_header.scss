@@ -1,0 +1,32 @@
+@import '../mixin';
+@import '../variable';
+
+header {
+    @include backImage('../image/header5_3.jpg');
+    .row{
+        color:white;
+        @include verticalCenter();
+    }
+    h1{
+        font-size: 4em;
+    }
+    p{
+        font-size: 1em;
+        font-weight: normal;
+        width: 65%;
+        margin: auto;
+        line-height: 2em;
+    }
+    #doneArrow{
+        margin-top: 1em;
+        font-size: 2em;
+        a:link, a:visited {
+            color:white;
+            text-decoration: none;
+        }
+        a:hover, a:active {
+            color: #bfbfbf;
+        }
+    }
+}
+
