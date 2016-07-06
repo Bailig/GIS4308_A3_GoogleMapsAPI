@@ -1,5 +1,18 @@
 var map;
 var historicalOverlay;
+var artifacts = [ 
+    <%
+        records.MoveFirst();
+        while (!records.EOF) { 
+        Response.Write("[")
+        Response.Write("\"" + records("Title")  + "\",")
+        Response.Write(records("POINT_Y")  + ", ")
+        Response.Write(records("POINT_X") + ", ")
+        Response.Write("1],")
+        records.MoveNext();
+        }
+    %>	
+];    
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -41,12 +54,19 @@ function initMap() {
     historicalOverlay = new google.maps.GroundOverlay(
           'image/map1.jpg',imageBounds);
     historicalOverlay.setMap(map);
-    
+
     var geocoder = new google.maps.Geocoder();
     document.getElementById('submit').addEventListener('click', function() {
         geocodeAddress(geocoder, map);
     });
-}// initMap
+    for (var i = 0; i < artifacts.length; i++) {
+        var marker = new google.maps.Marker({
+            position: {lat: artifacts[i][1], lng: artifacts[i][2]} ,
+            map: map,
+            title: artifacts[i][0]
+        });
+    }
+}
 
 function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('address').value;

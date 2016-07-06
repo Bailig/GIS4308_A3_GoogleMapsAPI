@@ -113,8 +113,7 @@
                         <%
                             records.MoveNext();
                             } 
-                            records.Close();
-                            conn.Close(); 
+                            
                         %>
                         </div>
                     </div>
@@ -128,8 +127,99 @@
 	    <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cycle.all.min.js"></script>
         <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript">
+            var map;
+            var historicalOverlay;
+            var artifacts = [ 
+                <%
+                    records.MoveFirst();
+                    while (!records.EOF) { 
+                    Response.Write("[")
+                    Response.Write("\"" + records("Title")  + "\",")
+                    Response.Write(records("POINT_Y")  + ", ")
+                    Response.Write(records("POINT_X") + ", ")
+                    Response.Write("1],")
+                    records.MoveNext();
+                    }
+                %>	
+            ];    
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 45.3492, lng: -75.7583},
+                    zoom: 10,
+                    mapTypeControl: true,
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                        mapTypeIds: [
+                            google.maps.MapTypeId.ROADMAP,
+                            google.maps.MapTypeId.TERRAIN,
+                            google.maps.MapTypeId.HYBRID,
+                            google.maps.MapTypeId.SATELLITE
+                        ]
+                    },
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        style: google.maps.ZoomControlStyle.LARGE
+                    }
+                });
+                var marker = new google.maps.Marker({
+                    position: {lat: 45.38099, lng: -75.69906},
+                    map: map,
+                    title: 'Loeb Building'
+                });
+                var info = "<p>The Loeb Building recognizes the financial contributions made to Carleton by Ottawa’s Loeb family. It houses offices for the Faculty of Public Affairs, as well as various academic departments, a cafeteria and lounge, classrooms and laboratories.</p>"
+                var infowindow = new google.maps.InfoWindow({
+                    content: info
+                });
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+                var imageBounds = {
+                    north: 45.353244,
+                    south: 45.345569,
+                    east: -75.741957,
+                    west: -75.765587
+                };
+                historicalOverlay = new google.maps.GroundOverlay(
+                      'image/map1.jpg',imageBounds);
+                historicalOverlay.setMap(map);
+
+                var geocoder = new google.maps.Geocoder();
+                document.getElementById('submit').addEventListener('click', function() {
+                    geocodeAddress(geocoder, map);
+                });
+                for (var i = 0; i < artifacts.length; i++) {
+                    var marker = new google.maps.Marker({
+                        position: {lat: artifacts[i][1], lng: artifacts[i][2]} ,
+                        map: map,
+                        title: artifacts[i][0]
+                    });
+                }
+            }
+
+            function geocodeAddress(geocoder, resultsMap) {
+                var address = document.getElementById('address').value;
+                geocoder.geocode({'address': address}, function(results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        resultsMap.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                            map: resultsMap,
+                            position: results[0].geometry.location
+                        });
+                    } else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+        </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.23
         &key=AIzaSyAewu4-e13oVJRDyv-cVJ4a0Vjx0m0LTQc&callback=initMap"></script>
-        <script type="text/javascript" src="js/script.js"></script>
+                
+        <% 
+            records.Close();
+            conn.Close();  
+        %>
 	</body>
 </html>

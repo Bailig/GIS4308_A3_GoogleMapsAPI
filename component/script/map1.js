@@ -18,9 +18,3 @@ $('#zoom').on("click",function(){
 $('#address').on("focus blur",function(){
     $('.input-group').toggleClass('focus');
 });
-$('#slideshow').cycle({
-    fx: 'fade',
-    next: '#next_btn',
-    prev: '#prev_btn',
-    cleartypeNoBg: true
-}); //cycle 

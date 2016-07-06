@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify');
 
 var sassSources = ['component/sass/style.scss'];
-var jsSources = ['component/script/map.js',
+var jsSources = ['component/script/map1.js',
                 'component/script/moreinfo.js'];
 
 gulp.task('compass',function(){
