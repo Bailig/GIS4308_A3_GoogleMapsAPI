@@ -2,7 +2,7 @@
 @import '../variable';
 
 header {
-    @include backImage('../image/header5_3.jpg');
+    @include backImage('../image/int1_2.jpg');
     .row{
         color:white;
         @include verticalCenter();

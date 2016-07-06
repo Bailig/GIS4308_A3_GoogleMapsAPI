@@ -1,4 +1,6 @@
 var map;
+var historicalOverlay;
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 45.3492, lng: -75.7583},
@@ -30,8 +32,36 @@ function initMap() {
     marker.addListener('click', function() {
         infowindow.open(map, marker);
     });
-}
+    var imageBounds = {
+        north: 45.353244,
+        south: 45.345569,
+        east: -75.741957,
+        west: -75.765587
+    };
+    historicalOverlay = new google.maps.GroundOverlay(
+          'image/map1.jpg',imageBounds);
+    historicalOverlay.setMap(map);
+    
+    var geocoder = new google.maps.Geocoder();
+    document.getElementById('submit').addEventListener('click', function() {
+        geocodeAddress(geocoder, map);
+    });
+}// initMap
 
+function geocodeAddress(geocoder, resultsMap) {
+    var address = document.getElementById('address').value;
+    geocoder.geocode({'address': address}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: resultsMap,
+                position: results[0].geometry.location
+            });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+}
 
 $('#algponquin').on("click",function(){
     map.setCenter({lat: 45.3492, lng: -75.7583});
@@ -50,3 +80,12 @@ $('#ottawaRoad').on("click",function(){
 $('#zoom').on("click",function(){
     map.setZoom(map.getZoom()+1);
 });
+$('#address').on("focus blur",function(){
+    $('.input-group').toggleClass('focus');
+});
+$('#slideshow').cycle({
+    fx: 'fade',
+    next: '#next_btn',
+    prev: '#prev_btn',
+    cleartypeNoBg: true
+}); //cycle 

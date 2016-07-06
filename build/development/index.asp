@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--<%@ Language=JavaScript%> -->
+<%@ Language=JavaScript%> 
 <html lang="en">
 	<head>
         <meta charset="utf-8">
@@ -7,11 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Bailig Abhanar</title>
 		
-		<!--<% 
+		<% 
             conn = Server.CreateObject("ADODB.Connection"); 
             conn.Open("DRIVER={Microsoft Access Driver (*.mdb)};DBQ=" +  Server.MapPath("MuseumArtifacts.mdb"));
-            records = conn.Execute("SELECT * FROM bai00022_POI");
-        %>-->
+            records = conn.Execute("SELECT * FROM bai00022_POI_WGS");
+        %>
     
 		<link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="lib/flat-ui.min.css">
@@ -83,45 +83,51 @@
             </div>
         </article>
         
-        <article id="moreInfoPage">
-           <!-- <div id="slideshowBox">
-                <a href="#" id="prev_btn">&laquo;</a>
-                <a href="#" id="next_btn">&raquo;</a>
-                <div id="slideshow">-->
+        <article id="moreInfoPage" class="container">
+           <div class="row">
+                <div class="col-md-10 col-sm-12 col-md-push-1">
+                    <h2 class="text-center">More Information</h2>
+                    <div id="slideshowBox">
+                        <a href="#" id="prev_btn">&laquo;</a>
+                        <a href="#" id="next_btn">&raquo;</a>
+                        <div id="slideshow">
 
-               <!-- <% 
-                    while (!records.EOF) { 
-                %> -->
-                    <!--<div class="slides">
-                        <h2 class="title">
-                            <%= records("Title") %>
-                        </h2>
-                        <div class="imgBox">
-                            <img src="<%= records("Pic_URL") %>" alt="Picture of <%= records("Title") %>">
+                        <% 
+                            while (!records.EOF) { 
+                        %> 
+                            <div class="slides">
+                                <h3 class="title">
+                                    <%= records("Title") %>
+                                </h3>
+                                <div class="imgBox">
+                                    <img src="<%= records("Pic_URL") %>" alt="Picture of <%= records("Title") %>">
+                                </div>
+                                <div class="pBox">
+                                    <p>My ID: <b><%= records("MyID") %></b></p>
+                                    <p>Contributor: <b><%= records("Contributor") %></b></p>
+                                    <p>Description: <b><%= records("Short_Desc") %></b></p>
+                                    <p>Latitude: <b><%= records("POINT_Y") %></b></p>
+                                    <p>Longitude: <b><%= records("POINT_X") %></b></p>
+                                </div>
+                            </div>
+                        <%
+                            records.MoveNext();
+                            } 
+                            records.Close();
+                            conn.Close(); 
+                        %>
                         </div>
-                        <div class="pBox">
-                            <p>My ID: <b><%= records("MyID") %></b></p>
-                            <p>Contributor: <b><%= records("Contributor") %></b></p>
-                            <p>Description: <b><%= records("Short_Desc") %></b></p>
-                            <p>Latitude: <b><%= records("POINT_Y") %></b></p>
-                            <p>Longitude: <b><%= records("POINT_X") %></b></p>
-                        </div>
-                    </div>-->
-                <!--<%
-                    records.MoveNext();
-                    } 
-                    records.Close();
-                    conn.Close(); 
-                %>-->
-               <!-- </div>
-            </div>-->
+                    </div>
+                </div>
+            </div>
         </article>
         
         <footer></footer>
         
         
 	    <script type="text/javascript" src="lib/jquery.min.js"></script>
-        <script type="text/javascript"  src="lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.cycle.all.min.js"></script>
+        <script type="text/javascript" src="lib/bootstrap.min.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.23
         &key=AIzaSyAewu4-e13oVJRDyv-cVJ4a0Vjx0m0LTQc&callback=initMap"></script>
         <script type="text/javascript" src="js/script.js"></script>
