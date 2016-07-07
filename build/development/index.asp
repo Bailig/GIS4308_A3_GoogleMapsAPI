@@ -121,7 +121,9 @@
             </div>
         </article>
         
-        <footer></footer>
+        <footer>
+            <p>Bailig Abhanar | Algonquin College</p>
+        </footer>
         
         
 	    <script type="text/javascript" src="lib/jquery.min.js"></script>
