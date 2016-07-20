@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 
 var sassSources = ['component/sass/style.scss'];
 var jsSources = ['component/script/map1.js',
-                'component/script/moreinfo.js'];
+                'component/script/moreinfo.js','component/script/scroll.js'];
 
 gulp.task('compass',function(){
     gulp.src(sassSources)

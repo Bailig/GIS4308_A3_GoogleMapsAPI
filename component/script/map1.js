@@ -13,7 +13,9 @@ $('#ottawaRoad').on("click",function(){
     map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 });
 $('#zoom').on("click",function(){
-    map.setZoom(map.getZoom()+1);
+    map.setCenter({lat: 40.809985, lng: 111.652904});
+    map.setZoom(10);
+    map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 });
 $('#address').on("focus blur",function(){
     $('.input-group').toggleClass('focus');

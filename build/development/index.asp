@@ -45,7 +45,22 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
-                       <h1 class="text-center">Bailig Abhanar</h1>
+                       <h1 class="text-center">
+                           <span>B</span>
+                           <span>a</span>
+                           <span>i</span>
+                           <span>l</span>
+                           <span>i</span>
+                           <span>g</span>
+                           <span> </span>
+                           <span>A</span>
+                           <span>b</span>
+                           <span>h</span>
+                           <span>a</span>
+                           <span>n</span>
+                           <span>a</span>
+                           <span>r</span>
+                       </h1>
                         <p class="text-center">This website is for the cource Web GIS Applications (GIS4308) Assignment03 Google Maps API.</p>
                         <p class="text-center" id="doneArrow"><a href="#mapPage"><span class="glyphicon glyphicon-menu-down"></span></a></p>
                     </div>
@@ -69,7 +84,7 @@
                             <button type="button" class="btn btn-primary" id="ottawaRoad">Ottawa Road Map</button>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary" id="zoom">Zoom</button>
+                            <button type="button" class="btn btn-primary" id="zoom">Hohhot</button>
                         </div>
                     </div>
                     <div id="floating-panel" class="input-group">
@@ -105,7 +120,6 @@
                                 <div class="pBox">
                                     <p>My ID: <b><%= records("MyID") %></b></p>
                                     <p>Contributor: <b><%= records("Contributor") %></b></p>
-                                    <p>Description: <b><%= records("Short_Desc") %></b></p>
                                     <p>Latitude: <b><%= records("POINT_Y") %></b></p>
                                     <p>Longitude: <b><%= records("POINT_X") %></b></p>
                                 </div>
@@ -129,7 +143,7 @@
 	    <script type="text/javascript" src="lib/jquery.min.js"></script>
         <script type="text/javascript" src="lib/jquery.cycle.all.min.js"></script>
         <script type="text/javascript" src="lib/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
+        
         <script type="text/javascript">
             var map;
             var historicalOverlay;
@@ -192,12 +206,27 @@
                 document.getElementById('submit').addEventListener('click', function() {
                     geocodeAddress(geocoder, map);
                 });
-                for (var i = 0; i < artifacts.length; i++) {
-                    var marker = new google.maps.Marker({
+				
+				var infowindow1 = new google.maps.InfoWindow();
+				var marker1, i;
+                for (i = 0; i < artifacts.length; i++) {
+                    marker1 = new google.maps.Marker({
                         position: {lat: artifacts[i][1], lng: artifacts[i][2]} ,
                         map: map,
                         title: artifacts[i][0]
                     });
+					google.maps.event.addListener(marker1, 'click', (function(marker1, i) {
+						return function() {
+						  infowindow1.setContent(artifacts[i][0]);
+						  infowindow1.open(map, marker1);
+						}
+					  })(marker1, i));
+					/*let infowindow1 = new google.maps.InfoWindow({
+						content: artifacts[i][0]
+					});
+					marker1.addListener('click', function() {
+						infowindow1.open(map, marker1);
+					});*/
                 }
             }
 
@@ -206,7 +235,7 @@
                 geocoder.geocode({'address': address}, function(results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
                         resultsMap.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
+                        var marker2 = new google.maps.Marker({
                             map: resultsMap,
                             position: results[0].geometry.location
                         });
@@ -216,6 +245,7 @@
                 });
             }
         </script>
+        <script type="text/javascript" src="js/script.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.23
         &key=AIzaSyAewu4-e13oVJRDyv-cVJ4a0Vjx0m0LTQc&callback=initMap"></script>
                 

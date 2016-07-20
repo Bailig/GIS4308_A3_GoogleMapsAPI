@@ -18,15 +18,83 @@ header {
         line-height: 2em;
     }
     #doneArrow{
-        margin-top: 1em;
-        font-size: 4em;
-        a:link, a:visited {
-            color:white;
-            text-decoration: none;
-        }
-        a:hover, a:active {
-            color: #bfbfbf;
-        }
+            margin-top: .5em;
+            font-size: 4em;
+            width: 1em;
+            height: 2em;
+            a:link, a:visited {
+                color:white;
+                text-decoration: none;
+                display: block;
+            }
+            a:hover {
+                color: #2f4154;
+                transform: scale(1.2);
+            }
     }
+    h1{
+        span {
+           display:inline-block;
+           transform-origin: 50% 70%;
+        }
+
+        span:nth-child(1) {
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 2 both;
+        }
+
+        span:nth-child(2) {
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 2.2s both;
+        }
+
+        span:nth-child(3) {
+         animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 2.4s both;
+        }
+
+        span:nth-child(4) {
+         animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 2.6s both;
+        }
+
+        span:nth-child(5) {
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 2.8s both;
+         }
+
+        span:nth-child(6) {
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 3s both;
+        }
+
+        span:nth-child(7) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 3.2s both;
+        }
+        span:nth-child(8) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 3.4s both;
+        }
+        span:nth-child(9) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 3.5s both;
+        }
+        span:nth-child(10) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 3.6s both;
+        }
+        span:nth-child(11) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 3.7s both;
+        }
+        span:nth-child(12) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 3.8s both;
+        }
+        span:nth-child(13) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 4s both;
+        }
+        span:nth-child(14) { 
+          animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 4.2s both;
+        }
+
+        @keyframes flipUp {
+          from {transform: rotateX(90deg);}
+          to {tranform: rotateX(0deg);}
+        }
+
+    }
+        
+    
 }
+
 
